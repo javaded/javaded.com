@@ -7,7 +7,7 @@ image: your-user/javaded
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 91.98.74.148
   # job:
   #   hosts:
   #     - 192.168.0.1
