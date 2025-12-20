@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get "/projects", to: "pages#projects", as: "projects"
-  get "/blog", to: "pages#blog", as: "blog"
+  resources :projects, only: [:index, :show]
+  resources :posts, only: [:index, :show]
   get "/about", to: "pages#about", as: "about"
   get "/contact", to: "pages#contact", as: "contact"
   root to: "pages#home"
