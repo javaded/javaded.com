@@ -12,7 +12,7 @@ Project.create!(
   slug: "scoutspin",
   description: "Table tennis match analysis and scouting tools.",
   status: "building",
-  features: true
+  featured: true
 )
 
 Post.create!(
