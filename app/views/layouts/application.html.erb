@@ -1,9 +1,21 @@
-<body class="bg-background text-text-main font-sans antialiased">
-  <%= render "layouts/navbar" %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavadED</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <main class="min-h-screen">
-    <%= yield %>
-  </main>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body class="bg-white text-gray-900 font-sans antialiased">
+    <%= render "layouts/navbar" %>
 
-  <%= render "layouts/footer" %>
-</body>
+    <main>
+      <%= yield %>
+    </main>
+
+    <%= render "layouts/footer" %>
+  </body>
+</html>
