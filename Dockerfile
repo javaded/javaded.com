@@ -60,12 +60,19 @@ COPY --from=build /rails /rails
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
+    mkdir -p /storage && \
+    chown -R rails:rails db log storage tmp /storage
 USER 1000:1000
+
+ENV RAILS_STORAGE_PATH="/storage"
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 80
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost/up || exit 1
+
 CMD ["./bin/thrust", "./bin/rails", "server"]
