@@ -1,28 +1,22 @@
 require "test_helper"
 
 class PagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
-    get pages_home_url
+  test "home renders the hero and recent posts" do
+    get root_path
     assert_response :success
+    assert_select "h1", text: /Javad Effat Doost/
   end
 
-  test "should get projects" do
-    get pages_projects_url
+  test "about renders the about copy" do
+    get about_path
     assert_response :success
+    assert_select "h1", text: /Javad Effat Doost/
   end
 
-  test "should get blog" do
-    get pages_blog_url
+  test "contact renders the contact form" do
+    get contact_path
     assert_response :success
-  end
-
-  test "should get about" do
-    get pages_about_url
-    assert_response :success
-  end
-
-  test "should get contact" do
-    get pages_contact_url
-    assert_response :success
+    assert_select "form"
+    assert_select "input[type=email]"
   end
 end

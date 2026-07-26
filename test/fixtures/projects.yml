@@ -1,0 +1,24 @@
+scoutspin:
+  title: ScoutSpin
+  slug: scoutspin
+  tagline: Table Tennis Analytics
+  description: A powerful table tennis analysis tool.
+  status: live
+  url: https://scoutspin.com
+  featured: true
+
+buildcue:
+  title: Buildcue
+  slug: buildcue
+  tagline: Software Development
+  description: A platform for makers.
+  status: building
+  url: https://buildcue.com
+  featured: false
+
+archived:
+  title: Old Thing
+  slug: old-thing
+  description: A retired experiment.
+  status: archived
+  featured: false

@@ -1,21 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html class="supports-[font-variation-settings:ok]:dark">
   <head>
-    <title>JavadED</title>
+    <title><%= content_for(:title) || "JavadED" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="bg-white text-gray-900 font-sans antialiased">
-    <%= render "layouts/navbar" %>
 
-    <main>
-      <%= yield %>
-    </main>
+  <body class="bg-bg-light text-ink-light font-display antialiased">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+      <div class="layout-container mx-auto flex w-full max-w-4xl grow flex-col px-6 sm:px-8">
+        <%= render "layouts/navbar" %>
 
-    <%= render "layouts/footer" %>
+        <main class="flex flex-1 flex-col">
+          <%= yield %>
+        </main>
+
+        <%= render "layouts/footer" %>
+      </div>
+    </div>
   </body>
 </html>

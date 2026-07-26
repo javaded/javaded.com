@@ -1,8 +1,15 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: :show
+
   def index
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.newest_first
+    fresh_when etag: @posts
   end
 
   def show
+    fresh_when etag: @post
   end
+
+  private
+    def set_post = @post = Post.find_by!(slug: params[:id])
 end

@@ -1,11 +1,27 @@
-<div>
-  <h1 class="font-bold text-4xl">Posts#index</h1>
-</div>
-<h1>Posts</h1>
-<% @posts.each do |post| %>
-  <article>
-    <h2><%= post.title %></h2>
-    <p><%= post.body.truncate(150) %></p>
-    <hr>
-  </article>
-<% end %>
+<section class="pb-16 pt-4 sm:pt-8">
+  <div class="text-center mb-16 sm:mb-24">
+    <p class="text-lg leading-relaxed text-subtle-light">
+      Writing about building products, making videos, and lessons learned along the way.
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-12 sm:gap-16">
+    <% @posts.each do |post| %>
+      <article class="flex flex-col gap-2 border-b border-edge-light pb-12 sm:pb-16 last:border-b-0">
+        <% if post.published_at %>
+          <p class="text-sm text-subtle-light font-medium"><%= post.published_at.strftime("%B %-d, %Y") %></p>
+        <% end %>
+        <%= link_to post, class: "group" do %>
+          <h3 class="font-serif text-3xl sm:text-4xl font-bold group-hover:text-primary transition-colors">
+            <%= post.title %>
+          </h3>
+          <% if post.excerpt.present? %>
+            <p class="mt-4 text-base leading-relaxed text-subtle-light">
+              <%= post.excerpt %>
+            </p>
+          <% end %>
+        <% end %>
+      </article>
+    <% end %>
+  </div>
+</section>

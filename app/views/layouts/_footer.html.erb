@@ -1,3 +1,9 @@
-<footer class="border-t border-border-color py-10 text-center text-sm text-text-secondary">
-  Made with Rails, camera, and curiosity — © <%= Time.current.year %> JavadED.
+<footer class="mt-auto py-10 text-center">
+  <div class="flex justify-center gap-6">
+    <%= link_to "X / Twitter", "https://x.com/", class: "text-subtle-light hover:text-primary transition-colors", target: "_blank", rel: "noopener", aria: { label: "Twitter" } %>
+    <%= link_to "LinkedIn", "https://linkedin.com/", class: "text-subtle-light hover:text-primary transition-colors", target: "_blank", rel: "noopener", aria: { label: "LinkedIn" } %>
+    <%= link_to "GitHub", "https://github.com/", class: "text-subtle-light hover:text-primary transition-colors", target: "_blank", rel: "noopener", aria: { label: "GitHub" } %>
+    <%= link_to "YouTube", "https://youtube.com/", class: "text-subtle-light hover:text-primary transition-colors", target: "_blank", rel: "noopener", aria: { label: "YouTube" } %>
+  </div>
+  <p class="mt-6 text-sm text-subtle-light">© <%= Time.current.year %> Javad Effat Doost. All rights reserved.</p>
 </footer>

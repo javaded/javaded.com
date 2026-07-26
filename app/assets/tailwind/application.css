@@ -1,1 +1,61 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #2b8cee;
+  --color-accent: #d97706;
+
+  --color-bg-light: #FAFAF9;
+  --color-bg-dark: #101922;
+
+  --color-ink-light: #1A1A1A;
+  --color-ink-dark: #E0E0E0;
+
+  --color-subtle-light: #6b7280;
+  --color-subtle-dark: #9ca3af;
+
+  --color-edge-light: #e5e7eb;
+  --color-edge-dark: #374151;
+
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg-light text-ink-light font-display antialiased;
+  }
+
+  .material-symbols-outlined {
+    font-family: "Material Symbols Outlined";
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+    font-size: 24px;
+  }
+}
+
+.drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  line-height: 0.8;
+  padding-top: 0.25rem;
+  padding-right: 0.75rem;
+  font-weight: 700;
+}

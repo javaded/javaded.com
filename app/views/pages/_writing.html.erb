@@ -1,10 +1,29 @@
-<section class="py-24">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-2xl font-serif leading-tight">Read my writing.</h2>
-    <p class="text-sm text-gray-600 max-w-xl">
-      Thoughts on code, business, and the art of the game.
-      Essays on building software with intent.
+<section class="border-t border-edge-light pt-12 pb-20 sm:pt-16">
+  <div class="flex flex-col gap-4 sm:gap-6">
+    <h2 class="font-serif text-2xl sm:text-3xl font-bold leading-tight tracking-tight">Read my writing</h2>
+    <p class="text-base sm:text-lg leading-relaxed text-subtle-light max-w-xl">
+      Thoughts on code, business, and the art of the game. Essays on building software with intent.
     </p>
-    <%= link_to "View Blog →", posts_path %>
+
+    <div class="mt-4 flex flex-col gap-8">
+      <% @posts.each do |post| %>
+        <article class="flex flex-col gap-2">
+          <% if post.published_at %>
+            <p class="text-sm text-subtle-light font-medium"><%= post.published_at.strftime("%B %-d, %Y") %></p>
+          <% end %>
+          <%= link_to post, class: "group" do %>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold group-hover:text-primary transition-colors">
+              <%= post.title %>
+            </h3>
+          <% end %>
+          <% if post.excerpt.present? %>
+            <p class="text-base leading-relaxed text-subtle-light"><%= post.excerpt %></p>
+          <% end %>
+        </article>
+      <% end %>
+    </div>
+
+    <%= link_to "View all posts →", posts_path,
+          class: "mt-6 inline-flex items-center text-sm font-medium hover:text-primary transition-colors" %>
   </div>
 </section>

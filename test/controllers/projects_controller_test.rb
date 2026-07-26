@@ -1,13 +1,20 @@
 require "test_helper"
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get projects_index_url
+  test "index lists featured project first" do
+    get projects_path
     assert_response :success
+    assert_select "article, div.flex.flex-col", count: Project.count
   end
 
-  test "should get show" do
-    get projects_show_url
+  test "show renders a single project by slug" do
+    get project_path(projects(:scoutspin))
     assert_response :success
+    assert_select "h1", text: "ScoutSpin"
+  end
+
+  test "show 404s for an unknown slug" do
+    get "/projects/nope"
+    assert_response :not_found
   end
 end
