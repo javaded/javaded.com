@@ -18,12 +18,8 @@
     </p>
   <% end %>
 
-  <article class="space-y-6">
-    <% @post.paragraphs.each_with_index do |paragraph, index| %>
-      <p class="text-lg font-normal leading-relaxed <%= "drop-cap" if index.zero? %>">
-        <%= paragraph %>
-      </p>
-    <% end %>
+  <article class="rich-text-body">
+    <%= @post.body %>
   </article>
 
   <footer class="mt-16 pt-8 border-t border-edge-light flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-4">
@@ -32,7 +28,7 @@
       <span class="material-symbols-outlined mr-2">arrow_back</span>
       Back to all posts
     <% end %>
-    <%= link_to "Follow me on X for shorter thoughts", "https://x.com/", target: "_blank", rel: "noopener",
+    <%= link_to "Follow me on X for shorter thoughts", "https://x.com/javaded", target: "_blank", rel: "noopener",
           class: "inline-flex items-center text-subtle-light hover:text-primary transition-colors" %>
   </footer>
 </section>

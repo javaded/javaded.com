@@ -40,3 +40,6 @@
 
 # Design reference files (kept local, not pushed)
 /design
+
+# Local documentation (kept local, not pushed)
+/documentation.md

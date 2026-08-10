@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   resources :projects, only: [:index, :show]
   resources :posts, only: [:index, :show]
   get "/about", to: "pages#about", as: "about"
   get "/contact", to: "pages#contact", as: "contact"
   root to: "pages#home"
+
+  namespace :admin do
+    resources :posts, except: :show
+    resources :projects, except: :show
+    root to: "dashboard#show", as: :root
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

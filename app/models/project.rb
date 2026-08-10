@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
   include Project::Sluggable
 
+  has_rich_text :description
+
   STATUS_BADGE = {
     live:     [ "bg-green-100", "text-green-700" ],
     building: [ "bg-blue-100",  "text-blue-700"  ],

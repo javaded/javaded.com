@@ -12,7 +12,9 @@
     <% if @project.tagline.present? %>
       <p class="text-lg text-subtle-light"><%= @project.tagline %></p>
     <% end %>
-    <p class="text-lg leading-relaxed text-subtle-light"><%= @project.description %></p>
+    <div class="rich-text-body">
+      <%= @project.description %>
+    </div>
 
     <% if @project.url.present? %>
       <%= link_to @project.url, target: "_blank", rel: "noopener",

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  allow_unauthenticated_access
   before_action :set_post, only: :show
 
   def index

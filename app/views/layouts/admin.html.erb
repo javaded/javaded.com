@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="supports-[font-variation-settings:ok]:dark">
+  <head>
+    <title><%= content_for(:title) || "Admin · JavadED" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="bg-bg-light text-ink-light font-display antialiased">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+      <div class="layout-container mx-auto flex w-full max-w-5xl grow flex-col px-6 sm:px-8">
+        <header class="flex items-center justify-between gap-4 whitespace-nowrap py-6 border-b border-edge-light">
+          <%= link_to "Admin", admin_root_path, class: "text-lg font-bold tracking-tight" %>
+          <nav class="flex items-center gap-6">
+            <%= link_to "Dashboard", admin_root_path, class: admin_nav_class(admin_root_path) %>
+            <%= link_to "Posts", admin_posts_path, class: admin_nav_class(admin_posts_path) %>
+            <%= link_to "Projects", admin_projects_path, class: admin_nav_class(admin_projects_path) %>
+          </nav>
+          <div class="flex items-center gap-4">
+            <%= link_to "View site", root_path, class: "text-sm font-medium text-subtle-light hover:text-primary transition-colors" %>
+            <%= button_to "Sign out", session_path, method: :delete, class: "text-sm font-medium text-subtle-light hover:text-primary transition-colors cursor-pointer" %>
+          </div>
+        </header>
+
+        <% if flash[:notice] %>
+          <p class="mt-6 rounded-lg bg-blue-100 text-blue-700 px-4 py-3 text-sm font-medium"><%= flash[:notice] %></p>
+        <% end %>
+
+        <main class="flex flex-1 flex-col py-8">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

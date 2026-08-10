@@ -22,6 +22,9 @@
     <%= nav_link_to "Projects", projects_path %>
     <%= nav_link_to "Blog", posts_path %>
     <%= nav_link_to "About", about_path %>
+    <% if authenticated? %>
+      <%= link_to "Admin", admin_root_path, class: "text-sm font-medium leading-normal text-subtle-light hover:text-primary transition-colors" %>
+    <% end %>
     <%= link_to "Get in touch", contact_path,
           class: "flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-ink-light text-bg-light text-sm font-bold leading-normal tracking-[0.015em] hover:bg-accent hover:text-white transition-colors" %>
   </nav>

@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   include Post::Sluggable
 
+  has_rich_text :body
+
   scope :published, -> { where.not(published_at: nil) }
   scope :newest_first, -> { order(published_at: :desc, created_at: :desc) }
   scope :chronological, -> { order(published_at: :asc, created_at: :asc) }
@@ -11,8 +13,4 @@ class Post < ApplicationRecord
   def to_param = slug
 
   def published? = published_at.present? && published_at <= Time.current
-
-  def paragraphs
-    body.to_s.split(/\n\s*\n/).map(&:strip).reject(&:blank?)
-  end
 end

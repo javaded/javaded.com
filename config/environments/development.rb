@@ -31,8 +31,17 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
+  # libvips isn't installed on this dev box (prod gets it from the Dockerfile),
+  # so fall back to ImageMagick (mini_magick) for variant generation. Without this,
+  # Action Text image attachments 500 on render because vips.so.42 won't load.
+  config.active_storage.variant_processor = :mini_magick
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+
+  # Deliver mail to a browser tab in dev via letter_opener, so password-reset
+  # (and any other mail) is visible without an SMTP server.
+  config.action_mailer.delivery_method = :letter_opener
 
   # Make template changes take effect immediately.
   config.action_mailer.perform_caching = false

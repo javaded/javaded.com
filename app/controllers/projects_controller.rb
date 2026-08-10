@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  allow_unauthenticated_access
   before_action :set_project, only: :show
 
   def index
