@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show]
   get "/about", to: "pages#about", as: "about"
   get "/contact", to: "pages#contact", as: "contact"
+  post "/contact", to: "messages#create"
   root to: "pages#home"
 
   namespace :admin do
