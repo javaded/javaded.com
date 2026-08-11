@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
-require_relative "../../lib/mailgun_delivery"
+require_relative "../../lib/resend_delivery"
 
-ActionMailer::Base.add_delivery_method :mailgun, MailgunDelivery
+ActionMailer::Base.add_delivery_method :resend, ResendDelivery
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -64,14 +64,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "javaded.com" }
 
   # Deliver outbound mail (password resets, contact-form messages) through the
-  # Mailgun HTTP API. API key is a Kamal secret (ENV); domain/host are non-secret
-  # and configurable so we can switch from the Mailgun sandbox to javaded.com
-  # once the domain is verified. See lib/mailgun_delivery.rb.
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV["MAILGUN_API_KEY"],
-    domain:  ENV.fetch("MAILGUN_DOMAIN", "javaded.com"),
-    host:    ENV.fetch("MAILGUN_HOST", "api.mailgun.net")
+  # Resend HTTP API. API key is a Kamal secret (ENV); the from address is
+  # configurable so we can use onboarding@resend.dev (no DNS) until javaded.com
+  # is verified. See lib/resend_delivery.rb.
+  config.action_mailer.delivery_method = :resend
+  config.action_mailer.resend_settings = {
+    api_key: ENV["RESEND_API_KEY"]
   }
   config.action_mailer.raise_delivery_errors = true
 

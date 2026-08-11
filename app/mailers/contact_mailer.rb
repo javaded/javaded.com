@@ -6,7 +6,7 @@ class ContactMailer < ApplicationMailer
     @email   = params[:email]
     @message = params[:message]
     mail to: "j.effatdoost@gmail.com",
-         from: "javaded.com contact form <no-reply@#{ENV.fetch('MAILGUN_DOMAIN', 'javaded.com')}>",
+         from: ENV.fetch("RESEND_FROM", "javaded.com <onboarding@resend.dev>"),
          reply_to: @email,
          subject: "New message from #{@name.presence || 'someone'}"
   end
