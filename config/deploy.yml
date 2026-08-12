@@ -47,6 +47,11 @@ env:
     # verified in Resend, so we send from the real domain.
     RESEND_FROM: "javaded.com <no-reply@javaded.com>"
 
+    # Resend audience for the subscribe form. Create an audience in the Resend
+    # dashboard (Contacts → Audiences) and paste its id here. NOTE: the API key
+    # must have contacts/audience access (sending-only keys can't add contacts).
+    RESEND_AUDIENCE_ID: ""
+
     # Set number of processes dedicated to Solid Queue (default: 1)
     # JOB_CONCURRENCY: 3
 

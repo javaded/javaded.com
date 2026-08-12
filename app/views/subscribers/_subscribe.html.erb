@@ -1,0 +1,14 @@
+<section class="mt-12 sm:mt-16">
+  <div class="rounded-lg border border-edge-light p-6 sm:p-8 flex flex-col gap-3 max-w-xl">
+    <h2 class="font-serif text-2xl sm:text-3xl font-bold leading-tight tracking-tight">Subscribe to the feed</h2>
+    <p class="text-base leading-relaxed text-subtle-light">
+      New posts in your inbox. No spam — unsubscribe anytime.
+    </p>
+    <%= form_with url: subscribers_path, scope: :subscriber, data: { turbo: false }, class: "mt-2 flex flex-col sm:flex-row gap-3" do |form| %>
+      <%= form.email_field :email, required: true, placeholder: "you@example.com",
+            class: "flex-1 rounded-lg border bg-transparent px-4 py-3 text-base font-normal leading-normal placeholder:text-subtle-light border-edge-light focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" %>
+      <%= form.submit "Subscribe",
+            class: "rounded-lg bg-ink-light text-bg-light text-sm font-bold leading-normal tracking-[0.015em] h-12 px-6 flex items-center justify-center hover:bg-accent hover:text-white transition-colors cursor-pointer whitespace-nowrap" %>
+    <% end %>
+  </div>
+</section>

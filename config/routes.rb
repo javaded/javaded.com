@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about", as: "about"
   get "/contact", to: "pages#contact", as: "contact"
   post "/contact", to: "messages#create"
+  post "/subscribers", to: "subscribers#create", as: :subscribers
   root to: "pages#home"
 
   namespace :admin do

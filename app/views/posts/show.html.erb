@@ -22,6 +22,8 @@
     <%= @post.body %>
   </article>
 
+  <%= render "subscribers/subscribe" %>
+
   <footer class="mt-16 pt-8 border-t border-edge-light flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-4">
     <%= link_to posts_path,
           class: "inline-flex items-center text-subtle-light hover:text-primary transition-colors" do %>
