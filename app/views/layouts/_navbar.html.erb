@@ -2,18 +2,6 @@
   <header class="flex items-center justify-between whitespace-nowrap py-8 sm:py-10">
   <div class="flex items-center gap-3">
     <%= link_to root_path, class: "flex items-center gap-3" do %>
-      <span class="size-6 text-ink-light">
-        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-          <g clip-path="url(#clip0_6_330)">
-            <path clip-rule="evenodd" d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" fill="currentColor" fill-rule="evenodd"></path>
-          </g>
-          <defs>
-            <clipPath id="clip0_6_330">
-              <rect fill="white" height="48" width="48"></rect>
-            </clipPath>
-          </defs>
-        </svg>
-      </span>
       <h2 class="text-xl font-bold tracking-tight">javaded</h2>
     <% end %>
   </div>
@@ -46,8 +34,8 @@
   </div>
   </header>
 
-  <div data-mobile-nav-target="menu" class="hidden sm:hidden flex-col gap-1 pb-6">
-    <div class="py-2">
+  <div data-mobile-nav-target="menu" class="hidden sm:hidden flex-col pb-6">
+    <div class="flex flex-col items-start gap-3 py-2 border-t border-edge-light">
       <%= nav_link_to "Home", root_path %>
       <%= nav_link_to "Projects", projects_path %>
       <%= nav_link_to "Blog", posts_path %>
