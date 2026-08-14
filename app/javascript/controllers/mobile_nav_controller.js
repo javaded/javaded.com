@@ -4,7 +4,8 @@ export default class extends Controller {
   static targets = ["menu", "icon"]
 
   toggle() {
-    const hidden = this.menuTarget.classList.toggle("hidden")
-    this.iconTarget.textContent = hidden ? "menu" : "close"
+    const isHidden = this.menuTarget.classList.toggle("hidden")
+    this.menuTarget.classList.toggle("flex", !isHidden)
+    this.iconTarget.textContent = isHidden ? "menu" : "close"
   }
 }

@@ -1,4 +1,5 @@
-<header class="flex items-center justify-between whitespace-nowrap py-8 sm:py-10">
+<div data-controller="mobile-nav">
+  <header class="flex items-center justify-between whitespace-nowrap py-8 sm:py-10">
   <div class="flex items-center gap-3">
     <%= link_to root_path, class: "flex items-center gap-3" do %>
       <span class="size-6 text-ink-light">
@@ -38,23 +39,24 @@
           class="flex items-center p-2 -mr-2 text-subtle-light hover:text-primary transition-colors">
       <span data-theme-target="icon" class="material-symbols-outlined leading-none">light_mode</span>
     </button>
-    <button type="button" data-controller="mobile-nav" data-action="mobile-nav#toggle" aria-label="Open menu" aria-expanded="false"
+    <button type="button" data-action="mobile-nav#toggle" aria-label="Open menu" aria-expanded="false"
           class="flex items-center p-2 -mr-2">
       <span data-mobile-nav-target="icon" class="material-symbols-outlined text-ink-light leading-none">menu</span>
     </button>
   </div>
-</header>
+  </header>
 
-<div data-mobile-nav-target="menu" data-controller="mobile-nav" class="hidden sm:hidden flex-col gap-1 pb-6">
-  <div class="py-2">
-    <%= nav_link_to "Home", root_path %>
-    <%= nav_link_to "Projects", projects_path %>
-    <%= nav_link_to "Blog", posts_path %>
-    <%= nav_link_to "About", about_path %>
-    <% if authenticated? %>
-      <%= link_to "Admin", admin_root_path, class: "block py-2 text-sm font-medium leading-normal text-subtle-light hover:text-primary transition-colors" %>
-    <% end %>
-    <%= link_to "Get in touch", contact_path,
-          class: "block py-2 text-sm font-bold leading-normal text-primary" %>
+  <div data-mobile-nav-target="menu" class="hidden sm:hidden flex-col gap-1 pb-6">
+    <div class="py-2">
+      <%= nav_link_to "Home", root_path %>
+      <%= nav_link_to "Projects", projects_path %>
+      <%= nav_link_to "Blog", posts_path %>
+      <%= nav_link_to "About", about_path %>
+      <% if authenticated? %>
+        <%= link_to "Admin", admin_root_path, class: "block py-2 text-sm font-medium leading-normal text-subtle-light hover:text-primary transition-colors" %>
+      <% end %>
+      <%= link_to "Get in touch", contact_path,
+            class: "block py-2 text-sm font-bold leading-normal text-primary" %>
+    </div>
   </div>
 </div>
