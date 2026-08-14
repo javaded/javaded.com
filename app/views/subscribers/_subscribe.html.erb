@@ -2,10 +2,10 @@
   <p class="text-lg text-subtle-light">
     Subscribe to get future posts via email
   </p>
-  <%= form_with url: subscribers_path, scope: :subscriber, data: { turbo: false }, class: "w-full max-w-md flex gap-2" do |form| %>
+  <%= form_with url: subscribers_path, scope: :subscriber, data: { turbo: false }, class: "w-full max-w-md flex flex-col sm:flex-row gap-2 sm:gap-2" do |form| %>
     <%= form.email_field :email, required: true, placeholder: "you@example.com", aria: { label: "Email address" },
-          class: "flex-1 rounded-lg border bg-transparent px-4 py-2.5 text-base font-normal leading-normal placeholder:text-subtle-light border-edge-light focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" %>
+          class: "w-full rounded-lg border bg-transparent px-4 py-2.5 text-base font-normal leading-normal placeholder:text-subtle-light border-edge-light focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" %>
     <%= form.submit "Subscribe",
-          class: "rounded-lg bg-ink-light text-bg-light text-sm font-bold leading-normal h-11 px-5 flex items-center hover:bg-accent hover:text-white transition-colors cursor-pointer whitespace-nowrap" %>
+          class: "rounded-lg bg-ink-light text-bg-light text-sm font-bold leading-normal h-11 px-5 flex items-center justify-center hover:bg-accent hover:text-white transition-colors cursor-pointer whitespace-nowrap" %>
   <% end %>
 </div>

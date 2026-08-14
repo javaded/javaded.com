@@ -38,8 +38,23 @@
           class="flex items-center p-2 -mr-2 text-subtle-light hover:text-primary transition-colors">
       <span data-theme-target="icon" class="material-symbols-outlined leading-none">light_mode</span>
     </button>
-    <button class="flex items-center p-2 -mr-2" aria-label="Open menu">
-      <span class="material-symbols-outlined text-ink-light leading-none">menu</span>
+    <button type="button" data-controller="mobile-nav" data-action="mobile-nav#toggle" aria-label="Open menu" aria-expanded="false"
+          class="flex items-center p-2 -mr-2">
+      <span data-mobile-nav-target="icon" class="material-symbols-outlined text-ink-light leading-none">menu</span>
     </button>
   </div>
 </header>
+
+<div data-mobile-nav-target="menu" data-controller="mobile-nav" class="hidden sm:hidden flex-col gap-1 pb-6">
+  <div class="py-2">
+    <%= nav_link_to "Home", root_path %>
+    <%= nav_link_to "Projects", projects_path %>
+    <%= nav_link_to "Blog", posts_path %>
+    <%= nav_link_to "About", about_path %>
+    <% if authenticated? %>
+      <%= link_to "Admin", admin_root_path, class: "block py-2 text-sm font-medium leading-normal text-subtle-light hover:text-primary transition-colors" %>
+    <% end %>
+    <%= link_to "Get in touch", contact_path,
+          class: "block py-2 text-sm font-bold leading-normal text-primary" %>
+  </div>
+</div>
