@@ -24,6 +24,26 @@
   --radius-xl: 0.75rem;
 }
 
+html.dark {
+  --color-bg-light: #101922;
+  --color-ink-light: #e5e7eb;
+  --color-subtle-light: #9ca3af;
+  --color-edge-light: #2a3646;
+
+  --color-stone-100: #1b2530;
+  --color-stone-400: #6b7280;
+  --color-stone-600: #9ca3af;
+
+  --color-green-100: #0f2e1c;
+  --color-green-700: #4ade80;
+  --color-blue-100: #12253d;
+  --color-blue-700: #7ab8f7;
+  --color-red-100: #3a1417;
+  --color-red-700: #f87171;
+
+  color-scheme: dark;
+}
+
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;

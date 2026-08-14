@@ -25,11 +25,21 @@
     <% if authenticated? %>
       <%= link_to "Admin", admin_root_path, class: "text-sm font-medium leading-normal text-subtle-light hover:text-primary transition-colors" %>
     <% end %>
+    <button type="button" data-controller="theme" data-action="theme#toggle" aria-label="Toggle dark mode"
+          class="flex items-center text-subtle-light hover:text-primary transition-colors">
+      <span data-theme-target="icon" class="material-symbols-outlined leading-none">light_mode</span>
+    </button>
     <%= link_to "Get in touch", contact_path,
           class: "flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-ink-light text-bg-light text-sm font-bold leading-normal tracking-[0.015em] hover:bg-accent hover:text-white transition-colors" %>
   </nav>
 
-  <button class="sm:hidden p-2 -mr-2" aria-label="Open menu">
-    <span class="material-symbols-outlined text-ink-light">menu</span>
-  </button>
+  <div class="sm:hidden flex items-center gap-2">
+    <button type="button" data-controller="theme" data-action="theme#toggle" aria-label="Toggle dark mode"
+          class="flex items-center p-2 -mr-2 text-subtle-light hover:text-primary transition-colors">
+      <span data-theme-target="icon" class="material-symbols-outlined leading-none">light_mode</span>
+    </button>
+    <button class="flex items-center p-2 -mr-2" aria-label="Open menu">
+      <span class="material-symbols-outlined text-ink-light leading-none">menu</span>
+    </button>
+  </div>
 </header>
