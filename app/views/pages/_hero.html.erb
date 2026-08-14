@@ -1,10 +1,10 @@
 <section class="pb-12 sm:pb-20 pt-4 sm:pt-8">
   <div class="flex flex-col gap-6">
     <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-      I’m Javad Effat Doost — a developer, maker, and lifelong table tennis learner.
+      I’m Javad. I build software and figure things out along the way.
     </h1>
     <p class="text-lg sm:text-xl font-normal leading-relaxed text-subtle-light max-w-xl">
-      My work sits at the intersection of technology, design, and a lifelong passion for table tennis. I build simple, elegant tools that I personally want to use.
+      Most of what I build starts with a problem I have myself.
     </p>
     <div class="flex flex-wrap gap-3 pt-2">
       <%= link_to "See my projects", projects_path,
@@ -13,17 +13,5 @@
             class: "rounded-lg border border-edge-light text-sm font-bold leading-normal h-10 px-4 flex items-center hover:border-primary hover:text-primary transition-colors" %>
     </div>
 
-    <% if @featured_project %>
-      <div class="mt-8 rounded-lg border border-edge-light p-6 flex flex-col gap-2">
-        <div class="flex items-center gap-3">
-          <span class="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700">Featured</span>
-          <h2 class="font-serif text-2xl font-bold"><%= @featured_project.title %></h2>
-        </div>
-        <% if @featured_project.tagline.present? %>
-          <p class="text-sm text-subtle-light"><%= @featured_project.tagline %></p>
-        <% end %>
-        <p class="text-base leading-relaxed text-subtle-light"><%= @featured_project.description %></p>
-      </div>
-    <% end %>
   </div>
 </section>

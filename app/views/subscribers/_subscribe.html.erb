@@ -1,6 +1,6 @@
 <div class="mt-16 sm:mt-24 flex flex-col items-center gap-4 text-center">
   <p class="text-lg text-subtle-light">
-    Get new posts by email.
+    Subscribe to get future posts via email
   </p>
   <%= form_with url: subscribers_path, scope: :subscriber, data: { turbo: false }, class: "w-full max-w-md flex gap-2" do |form| %>
     <%= form.email_field :email, required: true, placeholder: "you@example.com", aria: { label: "Email address" },

@@ -2,9 +2,10 @@ module ProjectsHelper
   def project_icon(project)
     case project.slug
     when /scoutspin/i then "sports_tennis"
+    when /spinyard/i  then "query_stats"
+    when /venonwood/i then "factory"
+    when /dropball/i  then "sports_soccer"
     when /buildcue/i  then "construction"
-    when /youtube/i   then "smart_display"
-    when /history/i   then "menu_book"
     else "widgets"
     end
   end

@@ -2,61 +2,75 @@
   <div class="flex flex-col gap-12 sm:gap-16">
     <section>
       <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-        I’m Javad Effat Doost — a developer, maker, and lifelong table tennis learner.
+        I’m Javad. I build software and figure things out along the way.
       </h1>
     </section>
 
-    <section>
-      <h2 class="font-serif text-2xl sm:text-3xl font-bold leading-tight tracking-tight pb-4 pt-5">What I Do</h2>
-      <div class="space-y-4 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
-        <p>
-          My work sits at the intersection of technology, design, and a lifelong passion for table tennis. I build digital products and tools that are simple, elegant, and effective, guided by a philosophy of creating things that I personally want to use. My mission is to craft experiences that are not only functional but also honest and delightful, stripping away the unnecessary to focus on what truly matters.
-        </p>
-        <p>
-          From developing intuitive software solutions to innovating within the table tennis community, every project is an opportunity to learn, refine my craft, and contribute something of value. I believe in quiet confidence, transparent processes, and the power of sustained effort over time.
-        </p>
-      </div>
-    </section>
 
     <section>
-      <h2 class="font-serif text-2xl sm:text-3xl font-bold leading-tight tracking-tight pb-4 pt-5">Now</h2>
-      <div class="text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
-        <p>
-          I’m currently focused on building ScoutSpin, a platform designed to help table tennis players analyze their game and improve faster. It’s the culmination of my love for the sport and my expertise in software development.
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="font-serif text-2xl sm:text-3xl font-bold leading-tight tracking-tight pb-6 pt-5">My Ecosystem</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <%= link_to "https://buildcue.com", target: "_blank", rel: "noopener",
-              class: "flex items-center gap-4 p-4 rounded-lg hover:bg-stone-100 transition-colors" do %>
-          <span class="material-symbols-outlined text-accent">construction</span>
-          <div>
-            <p class="font-bold">Buildcue</p>
-            <p class="text-sm text-subtle-light">Software Development</p>
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold leading-tight tracking-tight pb-6 pt-5">Projects</h2>
+      <p class="pb-8 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+        Some things I build with other people. Some I build on my own. Some work out. Some don't. A few are still unfinished.
+      </p>
+      <div class="space-y-10">
+        <div class="space-y-3">
+          <h3 class="font-serif text-xl sm:text-2xl font-bold">ScoutSpin</h3>
+          <div class="space-y-3 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+            <p>
+              I’m building ScoutSpin to help table tennis players find equipment that fits their game.
+            </p>
+            <p>
+              There are thousands of blades and rubbers to choose from, and comparing them is harder than it should be.
+            </p>
+            <p>It’s still being built.</p>
           </div>
-        <% end %>
+        </div>
 
-        <%= link_to "https://scoutspin.com", target: "_blank", rel: "noopener",
-              class: "flex items-center gap-4 p-4 rounded-lg hover:bg-stone-100 transition-colors" do %>
-          <span class="material-symbols-outlined text-accent">sports_tennis</span>
-          <div>
-            <p class="font-bold">ScoutSpin</p>
-            <p class="text-sm text-subtle-light">Table Tennis Analytics</p>
+        <div class="space-y-3">
+          <h3 class="font-serif text-xl sm:text-2xl font-bold"><%= link_to "Spinyard", "https://spinyardhq.com", target: "_blank", rel: "noopener", class: "underline decoration-subtle-light underline-offset-4 decoration-2 hover:decoration-primary hover:text-primary transition-colors" %></h3>
+          <div class="space-y-3 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+            <p>
+              Spinyard is a table tennis analytics project. I’m building it to help players get more information from their match footage.
+            </p>
+            <p>
+              It’s also still a work in progress. I’m figuring out what is actually useful before trying to build too much around it.
+            </p>
           </div>
-        <% end %>
+        </div>
 
-        <%= link_to "https://www.youtube.com/@Javaded", target: "_blank", rel: "noopener",
-              class: "flex items-center gap-4 p-4 rounded-lg hover:bg-stone-100 transition-colors" do %>
-          <span class="material-symbols-outlined text-accent">smart_display</span>
-          <div>
-            <p class="font-bold">YouTube Channel</p>
-            <p class="text-sm text-subtle-light">Content &amp; Tutorials</p>
+        <div class="space-y-3">
+          <h3 class="font-serif text-xl sm:text-2xl font-bold"><%= link_to "Venonwood", "https://venonwood.biz/", target: "_blank", rel: "noopener", class: "underline decoration-subtle-light underline-offset-4 decoration-2 hover:decoration-primary hover:text-primary transition-colors" %></h3>
+          <div class="space-y-3 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+            <p>
+              I’m a co-founder of Venonwood, a company that builds industrial wood-drying equipment.
+            </p>
+            <p>
+              I’ve worked on the software side of the business, but the interesting part is that the software is connected to real machines: sensors, PLCs, control systems, and dryers running in the real world.
+            </p>
           </div>
-        <% end %>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="font-serif text-xl sm:text-2xl font-bold"><%= link_to "Dropball", "https://dropball-game.ir/", target: "_blank", rel: "noopener", class: "underline decoration-subtle-light underline-offset-4 decoration-2 hover:decoration-primary hover:text-primary transition-colors" %></h3>
+          <div class="space-y-3 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+            <p>
+              I’m a co-founder of Dropball, a football quiz app that I built with others.
+            </p>
+            <p>It started as a small idea and turned into a real product. I’m still involved with it.</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="font-serif text-xl sm:text-2xl font-bold">Buildcue</h3>
+          <div class="space-y-3 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+            <p>
+              Buildcue is my company for the software I build independently.
+            </p>
+            <p>ScoutSpin and Spinyard are being built under Buildcue.</p>
+          </div>
+        </div>
       </div>
     </section>
   </div>
+  <%= render "subscribers/subscribe" %>
 </section>
