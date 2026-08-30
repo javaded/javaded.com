@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
-  resources :projects, only: [:index, :show]
-  resources :posts, only: [:index, :show]
+  resources :projects, only: [ :index, :show ]
+  resources :posts, only: [ :index, :show ]
   get "/about", to: "pages#about", as: "about"
   get "/contact", to: "pages#contact", as: "contact"
+  get "sitemap.xml", to: "sitemaps#show", as: :sitemap, defaults: { format: :xml }
   post "/contact", to: "messages#create"
   post "/subscribers", to: "subscribers#create", as: :subscribers
   root to: "pages#home"

@@ -63,6 +63,10 @@ Rails.application.configure do
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "javaded.com" }
 
+  # Canonical host for absolute URLs generated outside of requests (sitemaps).
+  # SSL terminates at the Kamal proxy, so requests reach the app as http.
+  config.action_controller.default_url_options = { host: "javaded.com", protocol: "https" }
+
   # Deliver outbound mail (password resets, contact-form messages) through the
   # Resend HTTP API. API key is a Kamal secret (ENV); the from address is
   # configurable so we can use onboarding@resend.dev (no DNS) until javaded.com
