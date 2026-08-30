@@ -4,7 +4,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   test "index lists featured project first" do
     get projects_path
     assert_response :success
-    assert_select "article, div.flex.flex-col", count: Project.count
+    assert_equal Project.featured_first.pluck(:title), css_select("main h2").map(&:text)
   end
 
   test "show renders a single project by slug" do

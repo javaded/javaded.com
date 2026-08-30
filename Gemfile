@@ -60,6 +60,9 @@ group :development do
 end
 
 group :test do
+  # Rails 8.0's test runner is incompatible with minitest 6; pin to 5.x until upgrading to Rails 8.1+
+  gem "minitest", "~> 5.25"
+
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"

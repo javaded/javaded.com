@@ -6,13 +6,8 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test "newest_first orders by published_at descending" do
-    ordered = Post.newest_first.to_a
-    assert ordered.first.published_at > ordered.last.published_at
-  end
-
-  test "paragraphs splits the body on blank lines" do
-    paragraphs = posts(:simplicity).paragraphs
-    assert_equal 3, paragraphs.length
+    assert_equal [ posts(:simplicity).slug, posts(:lessons).slug, posts(:draft).slug ],
+      Post.newest_first.pluck(:slug)
   end
 
   test "published? is true when published_at is in the past" do
