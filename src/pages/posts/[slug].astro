@@ -1,0 +1,48 @@
+---
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Subscribe from "../../components/Subscribe.astro";
+import { getPublishedPosts, formatDate, readingTime } from "../../lib/content";
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Base title={`${post.data.title} · JavadED`}>
+  <section class="pb-16 pt-4 sm:pt-8">
+    <h1 class="font-serif text-4xl sm:text-5xl font-bold leading-tight tracking-tight pb-4">{post.data.title}</h1>
+
+    <p class="text-sm text-subtle-light font-normal leading-normal pb-12 pt-1">
+      Published on {formatDate(post.data.pubDate)}
+      &bull; {readingTime(post)} min read
+    </p>
+
+    {post.data.excerpt && (
+      <p class="text-xl font-normal leading-relaxed text-subtle-light pb-8">{post.data.excerpt}</p>
+    )}
+
+    <article class="rich-text-body">
+      <Content />
+    </article>
+
+    <Subscribe />
+
+    <footer class="mt-16 pt-8 border-t border-edge-light flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-4">
+      <a href="/posts" class="inline-flex items-center text-subtle-light hover:text-primary transition-colors">
+        <span class="material-symbols-outlined mr-2">arrow_back</span>
+        Back to all posts
+      </a>
+      <a
+        href="https://x.com/javaded"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center text-subtle-light hover:text-primary transition-colors"
+      >Follow me on X for shorter thoughts</a>
+    </footer>
+  </section>
+</Base>

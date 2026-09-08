@@ -1,0 +1,102 @@
+---
+const links = [
+  { name: "Home", href: "/" },
+  { name: "Projects", href: "/projects" },
+  { name: "Blog", href: "/posts" },
+  { name: "About", href: "/about" },
+];
+
+const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+function navClass(href: string) {
+  const active =
+    href === "/" ? current === "/" : current === href || current.startsWith(href + "/");
+  return [
+    "text-sm font-medium leading-normal transition-colors",
+    active ? "text-primary font-bold" : "hover:text-primary",
+  ].join(" ");
+}
+---
+
+<header class="flex items-center justify-between whitespace-nowrap py-8 sm:py-10">
+  <div class="flex items-center gap-3">
+    <a href="/" class="flex items-center gap-3">
+      <h2 class="text-xl font-bold tracking-tight">javaded</h2>
+    </a>
+  </div>
+
+  <nav class="hidden sm:flex items-center gap-8">
+    {links.map((link) => <a href={link.href} class={navClass(link.href)}>{link.name}</a>)}
+    <button
+      type="button"
+      data-theme-toggle
+      aria-label="Toggle dark mode"
+      class="flex items-center text-subtle-light hover:text-primary transition-colors"
+    >
+      <span data-theme-icon class="material-symbols-outlined leading-none">light_mode</span>
+    </button>
+    <a
+      href="/contact"
+      class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-ink-light text-bg-light text-sm font-bold leading-normal tracking-[0.015em] hover:bg-accent hover:text-white transition-colors"
+    >
+      Get in touch
+    </a>
+  </nav>
+
+  <div class="sm:hidden flex items-center gap-2">
+    <button
+      type="button"
+      data-theme-toggle
+      aria-label="Toggle dark mode"
+      class="flex items-center p-2 -mr-2 text-subtle-light hover:text-primary transition-colors"
+    >
+      <span data-theme-icon class="material-symbols-outlined leading-none">light_mode</span>
+    </button>
+    <button
+      type="button"
+      data-mobile-nav-toggle
+      aria-label="Open menu"
+      aria-expanded="false"
+      class="flex items-center p-2 -mr-2"
+    >
+      <span data-mobile-nav-icon class="material-symbols-outlined text-ink-light leading-none">menu</span>
+    </button>
+  </div>
+</header>
+
+<div data-mobile-nav-menu class="hidden sm:hidden flex-col pb-6">
+  <div class="flex flex-col items-start gap-3 py-2 border-t border-edge-light">
+    {links.map((link) => <a href={link.href} class={navClass(link.href)}>{link.name}</a>)}
+    <a href="/contact" class="block py-2 text-sm font-bold leading-normal text-primary">Get in touch</a>
+  </div>
+</div>
+
+<script>
+  function renderThemeIcons() {
+    const isDark = document.documentElement.classList.contains("dark");
+    document.querySelectorAll("[data-theme-icon]").forEach((icon) => {
+      icon.textContent = isDark ? "light_mode" : "dark_mode";
+    });
+  }
+
+  document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      renderThemeIcons();
+    });
+  });
+  renderThemeIcons();
+
+  const menu = document.querySelector("[data-mobile-nav-menu]");
+  const toggle = document.querySelector("[data-mobile-nav-toggle]");
+  const menuIcon = document.querySelector("[data-mobile-nav-icon]");
+
+  toggle?.addEventListener("click", () => {
+    if (!menu) return;
+    const isHidden = menu.classList.toggle("hidden");
+    menu.classList.toggle("flex", !isHidden);
+    if (toggle) toggle.setAttribute("aria-expanded", String(!isHidden));
+    if (menuIcon) menuIcon.textContent = isHidden ? "menu" : "close";
+  });
+</script>

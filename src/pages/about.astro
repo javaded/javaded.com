@@ -1,0 +1,87 @@
+---
+import Base from "../layouts/Base.astro";
+import Subscribe from "../components/Subscribe.astro";
+---
+
+<Base title="About · JavadED">
+  <section class="pb-16 sm:pb-24 pt-4 sm:pt-8">
+    <div class="flex flex-col gap-12 sm:gap-16">
+      <section>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+          I'm Javad. I build software and figure things out along the way.
+        </h1>
+      </section>
+
+      <section>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold leading-tight tracking-tight pb-6 pt-5">Projects</h2>
+        <p class="pb-8 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+          Some things I build with other people. Some I build on my own. Some work out. Some don't. A few are still unfinished.
+        </p>
+        <div class="space-y-10">
+          <div class="space-y-3">
+            <h3 class="font-serif text-xl sm:text-2xl font-bold">ScoutSpin</h3>
+            <div class="space-y-3 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+              <p>I'm building ScoutSpin to help table tennis players find equipment that fits their game.</p>
+              <p>There are thousands of blades and rubbers to choose from, and comparing them is harder than it should be.</p>
+              <p>It's still being built.</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="font-serif text-xl sm:text-2xl font-bold">
+              <a
+                href="https://spinyardhq.com"
+                target="_blank"
+                rel="noopener"
+                class="underline decoration-subtle-light underline-offset-4 decoration-2 hover:decoration-primary hover:text-primary transition-colors"
+              >Spinyard</a>
+            </h3>
+            <div class="space-y-3 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+              <p>Spinyard is a table tennis analytics project. I'm building it to help players get more information from their match footage.</p>
+              <p>It's also still a work in progress. I'm figuring out what is actually useful before trying to build too much around it.</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="font-serif text-xl sm:text-2xl font-bold">
+              <a
+                href="https://venonwood.biz/"
+                target="_blank"
+                rel="noopener"
+                class="underline decoration-subtle-light underline-offset-4 decoration-2 hover:decoration-primary hover:text-primary transition-colors"
+              >Venonwood</a>
+            </h3>
+            <div class="space-y-3 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+              <p>I'm a co-founder of Venonwood, a company that builds industrial wood-drying equipment.</p>
+              <p>I've worked on the software side of the business, but the interesting part is that the software is connected to real machines: sensors, PLCs, control systems, and dryers running in the real world.</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="font-serif text-xl sm:text-2xl font-bold">
+              <a
+                href="https://dropball-game.ir/"
+                target="_blank"
+                rel="noopener"
+                class="underline decoration-subtle-light underline-offset-4 decoration-2 hover:decoration-primary hover:text-primary transition-colors"
+              >Dropball</a>
+            </h3>
+            <div class="space-y-3 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+              <p>I'm a co-founder of Dropball, a football quiz app that I built with others.</p>
+              <p>It started as a small idea and turned into a real product. I'm still involved with it.</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="font-serif text-xl sm:text-2xl font-bold">Buildcue</h3>
+            <div class="space-y-3 text-base sm:text-lg font-normal leading-relaxed text-subtle-light">
+              <p>Buildcue is my company for the software I build independently.</p>
+              <p>ScoutSpin and Spinyard are being built under Buildcue.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <Subscribe />
+  </section>
+</Base>
