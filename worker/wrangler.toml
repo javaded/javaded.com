@@ -1,0 +1,14 @@
+name = "javaded-api"
+main = "index.js"
+compatibility_date = "2026-09-01"
+
+# Non-secret config (also settable in the Cloudflare dashboard under
+# Workers & Pages -> javaded-api -> Settings -> Variables).
+[vars]
+CONTACT_TO = "j.effatdoost@gmail.com"
+# Must be a verified Resend sender/domain, or the default test sender:
+# CONTACT_FROM = "onboarding@resend.dev"
+
+# Secrets — set these with `wrangler secret put ...` (never in this file):
+#   RESEND_API_KEY        your Resend API key (Full access)
+#   RESEND_AUDIENCE_ID    the Resend Audience id used for newsletter signups

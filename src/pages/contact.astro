@@ -1,5 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
+
+const apiBase = import.meta.env.PUBLIC_API_URL ?? "";
 ---
 
 <Base title="Get in Touch · JavadED">
@@ -10,10 +12,12 @@ import Base from "../layouts/Base.astro";
     </p>
 
     <form
-      action="https://formspree.io/f/YOUR_FORM_ID"
-      method="POST"
-      class="mt-12 w-full max-w-xl space-y-6 text-left"
+      data-api={apiBase}
+      class="js-contact mt-12 w-full max-w-xl space-y-6 text-left"
+      novalidate
     >
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
       <div class="flex flex-col">
         <label for="name" class="pb-2 text-sm font-medium">Name</label>
         <input
@@ -49,8 +53,10 @@ import Base from "../layouts/Base.astro";
 
       <button
         type="submit"
-        class="w-full rounded-lg bg-ink-light text-bg-light px-6 py-3 text-base font-semibold transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-light cursor-pointer"
+        class="js-contact-btn w-full rounded-lg bg-ink-light text-bg-light px-6 py-3 text-base font-semibold transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg-light cursor-pointer disabled:opacity-50"
       >Send Message</button>
+
+      <p class="js-contact-status text-sm text-center text-subtle-light" role="status" aria-live="polite"></p>
     </form>
 
     <div class="mt-16 text-center">
@@ -62,3 +68,54 @@ import Base from "../layouts/Base.astro";
     </div>
   </section>
 </Base>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>(".js-contact");
+  const status = document.querySelector<HTMLElement>(".js-contact-status");
+  const button = document.querySelector<HTMLButtonElement>(".js-contact-btn");
+
+  function setStatus(message: string, ok: boolean) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.toggle("text-red-400", !ok);
+    status.classList.toggle("text-subtle-light", ok);
+  }
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const api = form.dataset.api?.replace(/\/$/, "");
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
+    const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value.trim();
+    const website = (form.elements.namedItem("website") as HTMLInputElement).value;
+
+    if (!api) {
+      setStatus("The contact form is not configured yet.", false);
+      return;
+    }
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !message) {
+      setStatus("Please fill in your name, a valid email, and a message.", false);
+      return;
+    }
+
+    if (button) button.disabled = true;
+    try {
+      const res = await fetch(`${api}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message, website }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (res.ok) {
+        form.reset();
+        setStatus("Message sent — I'll get back to you soon. Thanks!", true);
+      } else {
+        setStatus(data.error || "Something went wrong. Please try again.", false);
+      }
+    } catch {
+      setStatus("Network error. Please try again.", false);
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
+</script>
