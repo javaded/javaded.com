@@ -1,7 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 
-const apiBase = import.meta.env.PUBLIC_API_URL ?? "";
+const raw = (import.meta.env.PUBLIC_API_URL ?? "").trim().replace(/\/+$/, "");
+const apiBase = raw && !/^https?:\/\//.test(raw) ? `https://${raw}` : raw;
 ---
 
 <Base title="Get in Touch · JavadED">

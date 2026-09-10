@@ -1,5 +1,6 @@
 ---
-const apiBase = import.meta.env.PUBLIC_API_URL ?? "";
+const raw = (import.meta.env.PUBLIC_API_URL ?? "").trim().replace(/\/+$/, "");
+const apiBase = raw && !/^https?:\/\//.test(raw) ? `https://${raw}` : raw;
 ---
 
 <div class="mt-16 sm:mt-24 flex flex-col items-center gap-4 text-center">
