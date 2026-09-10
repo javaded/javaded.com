@@ -31,9 +31,14 @@ async function handleSubscribe(body, env) {
     return json({ error: "Please enter a valid email address." }, 400);
   }
 
-  const res = await resend(`/audiences/${env.RESEND_AUDIENCE_ID}/contacts`, "PUT", env, { email });
+  const res = await resend(`/audiences/${env.RESEND_AUDIENCE_ID}/contacts`, "POST", env, { email });
   if (!res.ok) {
-    console.error("Resend contacts error:", res.status, await res.text());
+    const text = await res.text();
+    // Already subscribed — treat as success
+    if (res.status === 409 || res.status === 422) {
+      return json({ ok: true });
+    }
+    console.error("Resend contacts error:", res.status, text);
     return json({ error: "Could not subscribe right now. Please try again later." }, 502);
   }
   return json({ ok: true });
