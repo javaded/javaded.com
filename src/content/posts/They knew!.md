@@ -3,6 +3,7 @@ title: They knew!
 excerpt: I thought it is easy to design an industrial dashboard!
 pubDate: 2026-09-26
 readingTime: 2
+draft: false
 ---
 
 I've been using OpenHAB for almost 10 years as an automation software for our wood dryer kilns, I used it in more than 200 kilns all over the country. It has a simple UI that nobody complains but there was always a conversation between us that we should upgrade the UI to something modern! 
